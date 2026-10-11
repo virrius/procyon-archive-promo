@@ -2,6 +2,9 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // картинки берутся рядом со скриптом: страница может лежать уровнем ниже (ru/)
+  const ROOT = document.currentScript.src.replace(/[^/]*$/, '');
+  const L = document.documentElement.lang === 'ru' ? 1 : 0;
 
   // подсветка раздела в боковом меню
   const nav = $('#nav'), links = $$('a', nav);
@@ -24,10 +27,12 @@
   onScroll();
 
   // заголовок «расшифровывается» из случайных знаков
-  const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%/<>+=*';
+  const LATIN = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%/<>+=*';
+  const CYRILLIC = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ0123456789#%/<>+=*';
   const scramble = el => {
     if (still) return;
     const text = el.textContent, n = text.length, t0 = performance.now(), dur = 520 + n * 22;
+    const GLYPHS = /[а-яё]/i.test(text) ? CYRILLIC : LATIN;
     el.style.minHeight = el.offsetHeight + 'px';
     const step = now => {
       const p = Math.min((now - t0) / dur, 1), k = Math.floor(p * n);
@@ -161,20 +166,36 @@
     } else go(0);
   });
 
-  // образы фракций: одни и те же трое в разной одежде
+  // образы фракций: одни и те же трое в разной одежде; подписи [en, ru]
   const LOOKS = [
-    ['guild_light', 'Guild — light', 'long tailored coat of pearl-white technical fabric with a high stand collar and hidden seams; pale grey fitted trousers; white gloves; slim gold guild sigil pin at the collar; polished pale grey boots'],
-    ['guild_dark', 'Guild — dark', 'long tailored coat of matte charcoal technical fabric with a high stand collar and hidden seams; black fitted trousers; black gloves; slim silver guild sigil pin at the collar; polished black boots'],
-    ['operative', 'Operatives', 'fitted dark grey tactical jacket with armoured shoulder panels; black high-collar undersuit; utility harness across the chest; cargo trousers with knee plates; soft-soled black boots; fingerless gloves'],
-    ['soldier', 'Soldiers', 'matte black powered armour of smooth angular plates with sealed joints; high armoured collar; thin glowing crimson rank strip across the left shoulder plate; integrated display panel on the left forearm; heavy magnetic boots'],
-    ['aristocrat', 'Aristocrats', 'asymmetric long coat of iridescent plum smart-fabric with angular shoulder plates of polished white ceramic; high collar with a translucent visor band; luminous filament embroidery in circuit-like patterns; fitted pale grey undersuit'],
-    ['scavenger', 'Scavengers', 'patched long duster of mismatched canvas and plastic sheeting; scarf wrapped over the lower face; welding goggles pushed up on the forehead; cracked salvaged chest plate over layered rags; heavy boots wrapped in tape'],
+    ['guild_light', ['Guild — light', 'Гильдия — светлая'], [
+      'long tailored coat of pearl-white technical fabric with a high stand collar and hidden seams; pale grey fitted trousers; white gloves; slim gold guild sigil pin at the collar; polished pale grey boots',
+      'длинное приталенное пальто из жемчужно-белой технической ткани с высоким воротником-стойкой и скрытыми швами; узкие светло-серые брюки; белые перчатки; тонкий золотой значок гильдии на воротнике; начищенные светло-серые сапоги']],
+    ['guild_dark', ['Guild — dark', 'Гильдия — тёмная'], [
+      'long tailored coat of matte charcoal technical fabric with a high stand collar and hidden seams; black fitted trousers; black gloves; slim silver guild sigil pin at the collar; polished black boots',
+      'длинное приталенное пальто из матовой угольно-серой технической ткани с высоким воротником-стойкой и скрытыми швами; узкие чёрные брюки; чёрные перчатки; тонкий серебряный значок гильдии на воротнике; начищенные чёрные сапоги']],
+    ['operative', ['Operatives', 'Оперативники'], [
+      'fitted dark grey tactical jacket with armoured shoulder panels; black high-collar undersuit; utility harness across the chest; cargo trousers with knee plates; soft-soled black boots; fingerless gloves',
+      'приталенная тёмно-серая тактическая куртка с бронепластинами на плечах; чёрный облегающий комбинезон с высоким воротом; разгрузка на груди; брюки-карго с наколенниками; чёрные ботинки на мягкой подошве; перчатки без пальцев']],
+    ['soldier', ['Soldiers', 'Солдаты'], [
+      'matte black powered armour of smooth angular plates with sealed joints; high armoured collar; thin glowing crimson rank strip across the left shoulder plate; integrated display panel on the left forearm; heavy magnetic boots',
+      'матовая чёрная силовая броня из гладких угловатых пластин с герметичными сочленениями; высокий бронированный воротник; тонкая светящаяся алая полоска звания на левом наплечнике; встроенный дисплей на левом предплечье; тяжёлые магнитные ботинки']],
+    ['aristocrat', ['Aristocrats', 'Аристократы'], [
+      'asymmetric long coat of iridescent plum smart-fabric with angular shoulder plates of polished white ceramic; high collar with a translucent visor band; luminous filament embroidery in circuit-like patterns; fitted pale grey undersuit',
+      'асимметричное длинное пальто из переливчатой сливовой смарт-ткани с угловатыми наплечниками из полированной белой керамики; высокий воротник с полупрозрачной полосой-визором; светящаяся вышивка нитью узором микросхемы; облегающий светло-серый комбинезон']],
+    ['scavenger', ['Scavengers', 'Старьёвщики'], [
+      'patched long duster of mismatched canvas and plastic sheeting; scarf wrapped over the lower face; welding goggles pushed up on the forehead; cracked salvaged chest plate over layered rags; heavy boots wrapped in tape',
+      'латаный длинный плащ из разномастного брезента и плёнки; шарф, намотанный на нижнюю часть лица; сварочные очки, сдвинутые на лоб; треснувшая подобранная нагрудная пластина поверх слоёв тряпья; тяжёлые ботинки, обмотанные изолентой']],
   ];
-  const WHO = ['A man in his forties, scarred', 'A young woman', 'An elderly tortoise-kin xenos'];
+  const WHO = [
+    ['A man in his forties, scarred', 'Мужчина за сорок со шрамами'],
+    ['A young woman', 'Молодая женщина'],
+    ['An elderly tortoise-kin xenos', 'Пожилой ксенос из черепахоподобных'],
+  ];
   const lookTabs = $('#look-tabs'), lookLine = $('#look-line');
   const lookImgs = WHO.map(w => {
     const i = new Image();
-    i.alt = w; i.loading = 'lazy'; i.dataset.zoom = '';
+    i.alt = w[L]; i.loading = 'lazy'; i.dataset.zoom = '';
     $('#look-trio').append(i);
     return i;
   });
@@ -182,18 +203,18 @@
     const [key, , text] = LOOKS[k];
     $$('button', lookTabs).forEach((b, n) => { b.classList.toggle('on', n === k); b.setAttribute('aria-selected', n === k); });
     lookImgs.forEach((i, n) => {
-      const src = `art/look_${key}_${'abc'[n]}.webp`;
+      const src = `${ROOT}art/look_${key}_${'abc'[n]}.webp`;
       if (!i.getAttribute('src')) { i.src = src; return; }
       i.classList.add('fade');
       const pre = new Image();
       pre.onload = () => { i.src = src; i.classList.remove('fade'); };
       pre.src = src;
     });
-    lookLine.textContent = text;
+    lookLine.textContent = text[L];
   };
   LOOKS.forEach(([, title], k) => {
     const b = document.createElement('button');
-    b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = title;
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = title[L];
     b.addEventListener('click', () => wear(k));
     lookTabs.append(b);
   });

@@ -88,6 +88,12 @@ h2 { margin: 0; font: 800 clamp(30px, 2.3vw, 40px)/1 var(--display); text-transf
   background-repeat: no-repeat; opacity: .8; }
 .hud { position: absolute; top: 46px; left: calc(var(--gut) + 4px); right: calc(var(--gut) + 4px); display: flex; justify-content: space-between; align-items: center;
   font: 500 12px var(--mono); letter-spacing: .22em; text-transform: uppercase; color: rgba(239, 232, 218, .78); }
+.lang { display: flex; align-items: center; }
+.lang > * { padding: 6px 6px 6px 8px; text-decoration: none; }
+.lang a { color: rgba(239, 232, 218, .55); transition: color .15s; }
+.lang a:hover, .lang a:focus-visible { color: var(--amber2); }
+.lang [aria-current] { color: var(--amber); }
+.lang i { padding: 0; font-style: normal; color: rgba(239, 232, 218, .3); }
 .rec { display: inline-block; width: 7px; height: 7px; margin-right: 12px; border-radius: 50%; background: var(--amber);
   box-shadow: 0 0 10px var(--amber); vertical-align: 1px; animation: blink 1.6s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
@@ -345,3 +351,8 @@ figure { margin: 0; }
 .pipe-log { margin: 0 0 40px; }
 .log blockquote s { color: var(--dim); text-decoration-thickness: 1px; }
 .log blockquote a { color: var(--amber); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* русская версия: у Big Shoulders нет кириллицы — буквы берёт узкий шрифт следом */
+:root:lang(ru) { --display: "Big Shoulders Display", "Oswald", "Arial Narrow", Impact, sans-serif; }
+:lang(ru) .shot figcaption::before { content: "РИС." counter(fig, decimal-leading-zero); }
+:lang(ru) .outfit::before { content: "одежда: "; }
