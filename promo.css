@@ -341,4 +341,5 @@ figure { margin: 0; }
   .pipe-label br { display: none; }
 }
 .pipe-log { margin: 0 0 40px; }
+.log blockquote s { color: var(--dim); text-decoration-thickness: 1px; }
 .log blockquote a { color: var(--amber); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }

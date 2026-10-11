@@ -120,12 +120,13 @@
   <div class="head" data-n="01"><p class="kicker">File 01 — Interface</p><h2>A look inside</h2></div>
   <div class="viewer" data-mode="snap">
     <div class="tabs" role="tablist">
-      <button type="button" role="tab"><b>01</b>NPCs<span>Everyone the crew has met, with portraits and tiers.</span></button>
+      <button type="button" role="tab"><b>01</b>NPCs<span>Everyone the crew can meet, with portraits and tiers.</span></button>
       <button type="button" role="tab"><b>02</b>Crew<span>Player characters, grouped by player.</span></button>
       <button type="button" role="tab"><b>03</b>NPC card<span>Description, links, clocks and pictures.</span></button>
       <button type="button" role="tab"><b>04</b>Character<span>Playbook, heritage, vice, look and background.</span></button>
       <button type="button" role="tab"><b>05</b>Places<span>Planets, stations and districts, by system.</span></button>
       <button type="button" role="tab"><b>06</b>Planet card<span>The rule from the book, kept as a GM note.</span></button>
+      <button type="button" role="tab"><b>07</b>Jobs &amp; rumors<span>Work on offer and rumors, with payoff, faction and who can see them.</span></button>
     </div>
     <div class="screen">
       <div class="screen-bar">
@@ -141,6 +142,7 @@
         <figure><img src="shots/app_pc.webp" data-zoom alt="A player character" loading="lazy"></figure>
         <figure><img src="shots/locations.webp" data-zoom alt="Places" loading="lazy"></figure>
         <figure><img src="shots/app_place.webp" data-zoom alt="A planet card" loading="lazy"></figure>
+        <figure><img src="shots/app_jobs.webp" data-zoom alt="Jobs and rumors" loading="lazy"></figure>
       </div>
     </div>
   </div>
@@ -158,7 +160,7 @@
   </div>
   <div class="frame">
     <div class="scroll">
-      <img src="shots/ship_full.webp" alt="The full ship sheet" loading="lazy" width="1600" height="3232">
+      <img src="shots/ship_full.webp" alt="The full ship sheet" loading="lazy" width="1740" height="4250">
     </div>
   </div>
   <p class="small">The ship sheet in full: reputation, XP, cred, debt, systems, upgrades, abilities and contacts. Scroll inside the frame.</p>
@@ -409,6 +411,14 @@
   <p class="note">Everything the interface does goes through a plain HTTP API, and the API explains itself. The intro of the schema tells an agent where to start (log in, read <code>/api/meta</code>, list campaigns and members), how roles and visibility work, how to find ids and what the error codes mean. Every operation has a summary, its side effects and request and response schemas. Swagger lives at <code>/api/docs</code>.</p>
   <p class="note">One rule keeps the table safe: whatever the GM creates without setting visibility stays GM-only, so nothing reaches the players until the GM opens it. This was tested: two agents with no access to the code, working only from the schema, did a GM's chores — an NPC with a rumor, a link and a board card; a clock, a letter and a news story — with no stray errors and nothing leaked to the players.</p>
   <p class="note">Quest boards have their own agent API: dump a board as text, then lay out cards, notes, clocks and threads in one call. Edits to cards, notes, maps, news and letters land in the campaign log with who made them and what was there before.</p>
+  <div class="log pipe-log">
+    <p class="kicker">From the author</p>
+    <blockquote>
+      <p><s>“Okay Claude, write me a quest. Make it cool and pretty.”</s></p>
+      <p>“Okay Claude. Listen to my brief, then put the factions and clocks from it on the board the way I described them. Set up ten or so extras, generate the character Bart Conwell, then do twenty or so sketches for the campaign and we'll pick the best. And on the right, in Marco's research group, rough out about ten short bits of small talk.”</p>
+      <footer>— Virrius</footer>
+    </blockquote>
+  </div>
   <div class="viewer">
     <div class="tabs" role="tablist">
       <button type="button" role="tab"><b>01</b>Board in one call<span>One call lays out part of a quest board: a card for a record found by name, a note and a clock, linked with threads.</span></button>
