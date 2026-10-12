@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Procyon Archive</title>
-<meta name="description" content="A self-hosted workbench for Scum and Villainy GMs: quest boards, pictures, letters, maps and news, shared with the players.">
+<meta name="description" content="A self-hosted workbench for Scum and Villainy GMs: story boards, pictures, letters, maps and news, shared with the players.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
     <a href="#characters"><i>05</i>Notes</a>
     <a href="#access"><i>06</i>Access</a>
     <a href="#maps"><i>07</i>Maps</a>
-    <a href="#boards"><i>08</i>Quest boards</a>
+    <a href="#boards"><i>08</i>Story boards</a>
     <a href="#news"><i>09</i>News</a>
     <a href="#agents"><i>10</i>Agent Friendly</a>
   </nav>
@@ -45,7 +45,7 @@
   <div class="hero-text">
     <p class="kicker">A GM workbench for <a class="sv-link" href="https://evilhat.com/product/scum-and-villainy/" target="_blank" rel="noopener">Scum and Villainy</a></p>
     <h1 aria-label="Procyon Archive"><span data-scramble>Procyon</span><span class="outline" data-scramble>Archive</span></h1>
-    <p class="lede">A self-hosted workbench for Scum and Villainy GMs. Plan jobs on quest boards, fill them with pictures, letters, maps and news, and show the players exactly what they should see.</p>
+    <p class="lede">A self-hosted workbench for Scum and Villainy GMs. Plan jobs on story boards, fill them with pictures, letters, maps and news, and show the players exactly what they should see.</p>
   </div>
 </header>
 
@@ -341,7 +341,7 @@
 </section>
 
 <section id="boards">
-  <div class="head" data-n="08"><p class="kicker">File 08 — GM space</p><h2>Quest boards</h2></div>
+  <div class="head" data-n="08"><p class="kicker">File 08 — GM space</p><h2>Story boards</h2></div>
   <p class="note">A canvas per storyline for the GM. Cards, notes, clocks, pictures and hand-drawn sketches, connected with threads.</p>
   <div class="viewer">
     <div class="tabs" role="tablist">
@@ -364,7 +364,7 @@
           <span class="pano-hint" aria-hidden="true">Drag to look around</span>
         </div>
         <div class="pane"><img src="shots/board_sketches.webp" data-zoom alt="Sketches and clocks on the board" loading="lazy"></div>
-        <div class="pane"><img src="shots/board_menu.webp" data-zoom alt="The right-click menu on a quest board" loading="lazy" width="1600" height="1466"></div>
+        <div class="pane"><img src="shots/board_menu.webp" data-zoom alt="The right-click menu on a story board" loading="lazy" width="1600" height="1466"></div>
         <div class="pane"><img src="shots/board_menu_2.webp" data-zoom alt="Pinning an existing card" loading="lazy" width="1562" height="880"></div>
         <div class="pane"><img src="shots/board_menu_3.webp" data-zoom alt="Creating a quick extra" loading="lazy" width="1560" height="1448"></div>
       </div>
@@ -388,7 +388,7 @@
       <button type="button" role="tab"><b>01</b>Journalists<span>Three journalists, three sides: Lazarus the anarchist, Sterling on the Guilds' money, Herald with the Legion. Each persona can be edited.</span></button>
       <button type="button" role="tab"><b>02</b>Ordering a dispatch<span>Pick a journalist, link records and clocks, write what happened.</span></button>
       <button type="button" role="tab"><b>03</b>The feed<span>Stories on air with comments from people in the sector. Scroll inside the frame.</span></button>
-      <button type="button" role="tab"><b>04</b>From a clock<span>Right-click a faction clock on a quest board, pick “news about this” and leave “What happened” empty: the journalist picks the event from the clock and its faction. The story airs linked to the clock, and the clock doesn't move. Scroll inside the frame.</span></button>
+      <button type="button" role="tab"><b>04</b>From a clock<span>Right-click a faction clock on a story board, pick “news about this” and leave “What happened” empty: the journalist picks the event from the clock and its faction. The story airs linked to the clock, and the clock doesn't move. Scroll inside the frame.</span></button>
     </div>
     <div class="screen">
       <div class="screen-bar">
@@ -411,7 +411,7 @@
   <div class="head" data-n="10"><p class="kicker">File 10 — API</p><h2>Agent Friendly</h2></div>
   <p class="note">Everything the interface does goes through a plain HTTP API, and the API explains itself. The intro of the schema tells an agent where to start (log in, read <code>/api/meta</code>, list campaigns and members), how roles and visibility work, how to find ids and what the error codes mean. Every operation has a summary, its side effects and request and response schemas. Swagger lives at <code>/api/docs</code>.</p>
   <p class="note">One rule keeps the table safe: whatever the GM creates without setting visibility stays GM-only, so nothing reaches the players until the GM opens it. This was tested: two agents with no access to the code, working only from the schema, did a GM's chores — an NPC with a rumor, a link and a board card; a clock, a letter and a news story — with no stray errors and nothing leaked to the players.</p>
-  <p class="note">Quest boards have their own agent API: dump a board as text, then lay out cards, notes, clocks and threads in one call. Edits to cards, notes, maps, news and letters land in the campaign log with who made them and what was there before.</p>
+  <p class="note">Story boards have their own agent API: dump a board as text, then lay out cards, notes, clocks and threads in one call. Edits to cards, notes, maps, news and letters land in the campaign log with who made them and what was there before.</p>
   <div class="log pipe-log">
     <p class="kicker">From the author</p>
     <blockquote>
@@ -422,7 +422,7 @@
   </div>
   <div class="viewer">
     <div class="tabs" role="tablist">
-      <button type="button" role="tab"><b>01</b>Board in one call<span>One call lays out part of a quest board: a card for a record found by name, a note and a clock, linked with threads.</span></button>
+      <button type="button" role="tab"><b>01</b>Board in one call<span>One call lays out part of a story board: a card for a record found by name, a note and a clock, linked with threads.</span></button>
       <button type="button" role="tab"><b>02</b>Swagger<span>The schema in Swagger: the intro tells an agent where to start, how roles and visibility work and what the errors mean. Scroll inside the frame.</span></button>
       <button type="button" role="tab"><b>03</b>Campaign log<span>The Amerath Arena map was put together through the API: the file, the map and ten markers. Below, a news story was hidden from the players.</span></button>
     </div>
