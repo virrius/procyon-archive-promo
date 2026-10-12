@@ -179,6 +179,10 @@ figure { margin: 0; }
 .viewer:not([data-mode="snap"]) .slides > .on { display: block; animation: pane-in .35s ease both; }
 @keyframes pane-in { from { opacity: 0; } to { opacity: 1; } }
 .pane .scroll { max-height: min(70vh, 620px); }
+/* кадры с телефона — рядом, по высоте панели */
+.pane .phones { display: flex; justify-content: center; align-items: flex-start; gap: 12px; padding: 12px; }
+.slides .phones img { width: auto; min-width: 0; max-width: calc(50% - 6px); max-height: min(70vh, 620px); border: 1px solid var(--line); }
+.slides .phones img:only-child { max-width: 100%; }
 
 /* генерация: описание и варианты */
 .example { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-bottom: 20px; }
@@ -194,9 +198,7 @@ figure { margin: 0; }
   transition: transform .3s, border-color .3s, filter .3s; }
 .four img:hover { transform: translateY(-4px); border-color: var(--amber); filter: none; }
 .looks { margin-top: 56px; }
-.phones { margin-top: 56px; }
-.phone-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 960px; align-items: start; }
-.looks h3, .phones h3 { margin: 0 0 10px; font: 800 26px/1.1 var(--display); letter-spacing: .02em; text-transform: uppercase; color: var(--text); }
+.looks h3 { margin: 0 0 10px; font: 800 26px/1.1 var(--display); letter-spacing: .02em; text-transform: uppercase; color: var(--text); }
 .look-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 14px; }
 .look-tabs button { padding: 7px 14px; border: 1px solid var(--line2); background: var(--panel); font: 500 12px/1 var(--mono);
   letter-spacing: .12em; text-transform: uppercase; color: var(--dim); cursor: pointer; }
@@ -305,10 +307,6 @@ figure { margin: 0; }
   .pano-hint { top: 8px; right: 8px; padding: 4px 8px 3px; font-size: 10px; }
   .slides .pano img { width: 1500px; }
   .pair, .example { grid-template-columns: minmax(0, 1fr); }
-  /* телефоны — лентой с прокруткой вбок */
-  .phone-row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%; gap: 12px;
-    overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
-  .phone-row > figure { scroll-snap-align: start; }
   .four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .foot { margin-top: 100px; }
   .lb { padding: 8px; }
