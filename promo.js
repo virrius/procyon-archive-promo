@@ -220,21 +220,30 @@
   });
   wear(0);
 
-  // просмотр крупно: листает картинки своего раздела; data-zoom="full" — в натуральную величину
+  // просмотр крупно: листает картинки своего раздела; data-zoom="full" — в натуральную величину,
+  // слишком высокие для экрана — по ширине, с прокруткой
   const lb = $('#lb'), lbImg = $('img', lb);
   let items = [], at = 0;
-  const show = k => { at = (k + items.length) % items.length; lbImg.src = items[at]; };
-  const close = () => { lb.classList.remove('on', 'full'); lbImg.removeAttribute('src'); document.body.style.overflow = ''; };
+  const show = k => {
+    at = (k + items.length) % items.length;
+    const { src, w, h } = items[at];
+    lb.classList.toggle('tall', !lb.classList.contains('full') && h / w > 1.6 * innerHeight / innerWidth);
+    lb.scrollTo(0, 0);
+    lbImg.src = src;
+  };
+  const close = () => { lb.classList.remove('on', 'full', 'tall'); lbImg.removeAttribute('src'); document.body.style.overflow = ''; };
   panify(lb, () => lb.classList.contains('full'));
   document.addEventListener('click', e => {
     const pic = e.target.closest('[data-zoom]');
     if (!pic || lb.contains(pic)) return;
     const full = pic.dataset.zoom === 'full';
     const scope = full ? pic.parentNode : pic.closest('section, .band') || document;
-    items = [...new Set($$('[data-zoom]', scope).map(i => i.currentSrc || i.src))];
-    show(items.indexOf(pic.currentSrc || pic.src));
+    const seen = new Set();
+    items = $$('[data-zoom]', scope).map(i => ({
+      src: i.currentSrc || i.src, w: i.naturalWidth || +i.getAttribute('width'), h: i.naturalHeight || +i.getAttribute('height'),
+    })).filter(x => !seen.has(x.src) && seen.add(x.src));
     lb.classList.toggle('full', full);
-    lb.scrollTo(0, 0);
+    show(items.findIndex(x => x.src === (pic.currentSrc || pic.src)));
     lb.classList.add('on');
     document.body.style.overflow = 'hidden';
   });
