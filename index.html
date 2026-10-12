@@ -21,7 +21,7 @@
   <nav id="nav">
     <a href="#author"><i>00</i>From the author</a>
     <a href="#screens"><i>01</i>Look inside</a>
-    <a href="#all"><i>02</i>Ship sheet</a>
+    <a href="#all"><i>02</i>Sheets</a>
     <a href="#pictures"><i>03</i>Visuals</a>
     <a href="#pipeline"><i>04</i>Pipeline</a>
     <a href="#characters"><i>05</i>Notes</a>
@@ -124,7 +124,7 @@
       <button type="button" role="tab"><b>01</b>NPCs<span>Everyone the crew can meet, with portraits and tiers.</span></button>
       <button type="button" role="tab"><b>02</b>Crew<span>Player characters, grouped by player.</span></button>
       <button type="button" role="tab"><b>03</b>NPC card<span>Description, links, clocks and pictures.</span></button>
-      <button type="button" role="tab"><b>04</b>Character<span>Playbook, heritage, vice, look and background.</span></button>
+      <button type="button" role="tab"><b>04</b>Character<span>The character sheet: stress, harm, actions, special abilities and items.</span></button>
       <button type="button" role="tab"><b>05</b>Places<span>Planets, stations and districts, by system.</span></button>
       <button type="button" role="tab"><b>06</b>Planet card<span>The rule from the book, kept as a GM note.</span></button>
       <button type="button" role="tab"><b>07</b>Jobs &amp; rumors<span>Work on offer and rumors, with payoff, faction and who can see them.</span></button>
@@ -140,7 +140,7 @@
         <figure><img src="shots/npcs.webp" data-zoom alt="NPCs" loading="lazy"></figure>
         <figure><img src="shots/app_team.webp" data-zoom alt="Crew" loading="lazy"></figure>
         <figure><img src="shots/app_dossier.webp" data-zoom alt="An NPC card" loading="lazy"></figure>
-        <figure><img src="shots/app_pc.webp" data-zoom alt="A player character" loading="lazy"></figure>
+        <figure><img src="shots/app_pc.webp" data-zoom alt="A character sheet" loading="lazy"></figure>
         <figure><img src="shots/locations.webp" data-zoom alt="Places" loading="lazy"></figure>
         <figure><img src="shots/app_place.webp" data-zoom alt="A planet card" loading="lazy"></figure>
         <figure><img src="shots/app_jobs.webp" data-zoom alt="Jobs and rumors" loading="lazy"></figure>
@@ -150,21 +150,35 @@
 </section>
 
 <section id="all">
-  <div class="head" data-n="02"><p class="kicker">File 02 — The ship</p><h2>An easy-to-read ship sheet</h2></div>
+  <div class="head" data-n="02"><p class="kicker">File 02 — Sheets</p><h2>Ship and character sheets</h2></div>
   <div class="log pipe-log">
     <p class="kicker">From the author</p>
     <blockquote>
       <p>I kept forgetting what was on the ship sheet and having to dig it up for the players so they could spend upgrades between sessions. Now it lives here too, and it's easy to edit from a phone.</p>
-      <p>That said, I like the idea of every player owning a physical character sheet of their own, so I haven't added character sheets yet.</p>
       <footer>— Virrius</footer>
     </blockquote>
   </div>
-  <div class="frame">
-    <div class="scroll">
-      <img src="shots/ship_full.webp" alt="The full ship sheet" loading="lazy" width="1740" height="4250">
+  <p class="note">Characters have sheets now too. The Sheet tab puts stress, trauma, harm, load, cred, actions, special abilities and items on one screen, with a rules reference in the header that explains each line on click. Setup walks a player through creation and advancement, and the Dossier shows the same character as a Hegemony case file.</p>
+  <div class="viewer">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab"><b>01</b>Ship sheet<span>Reputation, XP, cred, debt, systems, upgrades, abilities and contacts. Scroll inside the frame.</span></button>
+      <button type="button" role="tab"><b>02</b>Character sheet<span>Stress, trauma, harm, load and cred on the left; actions, special abilities and items on the right; the rules reference in the header.</span></button>
+      <button type="button" role="tab"><b>03</b>Dossier<span>The same character through the Hegemony's eyes: the investigator's summary, psych profile, training and case attachments. Scroll inside the frame.</span></button>
+    </div>
+    <div class="screen">
+      <div class="screen-bar">
+        <span class="ticks"></span>
+        <span class="count"></span>
+        <button type="button" data-step="-1" aria-label="Previous">←</button>
+        <button type="button" data-step="1" aria-label="Next">→</button>
+      </div>
+      <div class="slides">
+        <div class="pane"><div class="scroll"><img src="shots/ship_full.webp" alt="The full ship sheet" loading="lazy" width="1740" height="4250"></div></div>
+        <div class="pane"><img src="shots/char_full.webp" data-zoom alt="A character sheet" loading="lazy" width="1740" height="1406"></div>
+        <div class="pane"><div class="scroll"><img src="shots/char_dossier.webp" alt="A character dossier" loading="lazy" width="1740" height="1881"></div></div>
+      </div>
     </div>
   </div>
-  <p class="small">The ship sheet in full: reputation, XP, cred, debt, systems, upgrades, abilities and contacts. Scroll inside the frame.</p>
 </section>
 
 <section id="pictures">

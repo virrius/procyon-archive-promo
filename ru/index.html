@@ -21,7 +21,7 @@
   <nav id="nav">
     <a href="#author"><i>00</i>От автора</a>
     <a href="#screens"><i>01</i>Что внутри</a>
-    <a href="#all"><i>02</i>Бланк корабля</a>
+    <a href="#all"><i>02</i>Бланки</a>
     <a href="#pictures"><i>03</i>Картинки</a>
     <a href="#pipeline"><i>04</i>Пайплайн</a>
     <a href="#characters"><i>05</i>Записи</a>
@@ -124,7 +124,7 @@
       <button type="button" role="tab"><b>01</b>Контакты<span>Все, кого экипаж может встретить, с портретами и рангами.</span></button>
       <button type="button" role="tab"><b>02</b>Команда<span>Персонажи игроков, разложенные по владельцам.</span></button>
       <button type="button" role="tab"><b>03</b>Карточка контакта<span>Описание, связи, счётчики и картинки.</span></button>
-      <button type="button" role="tab"><b>04</b>Персонаж<span>Класс, происхождение, страсти, внешность и прошлое.</span></button>
+      <button type="button" role="tab"><b>04</b>Персонаж<span>Бланк персонажа: состояние, навыки, способности и снаряжение.</span></button>
       <button type="button" role="tab"><b>05</b>Локации<span>Планеты, станции и районы, разложенные по системам.</span></button>
       <button type="button" role="tab"><b>06</b>Карточка планеты<span>Правило из книги лежит записью ГМа.</span></button>
       <button type="button" role="tab"><b>07</b>Работёнка и слухи<span>Предложения работы и слухи: оплата, фракция и кто их видит.</span></button>
@@ -140,7 +140,7 @@
         <figure><img src="../shots/ru/npcs.webp" data-zoom alt="Контакты" loading="lazy"></figure>
         <figure><img src="../shots/ru/app_team.webp" data-zoom alt="Команда" loading="lazy"></figure>
         <figure><img src="../shots/ru/app_dossier.webp" data-zoom alt="Карточка контакта" loading="lazy"></figure>
-        <figure><img src="../shots/ru/app_pc.webp" data-zoom alt="Персонаж игрока" loading="lazy"></figure>
+        <figure><img src="../shots/ru/app_pc.webp" data-zoom alt="Бланк персонажа" loading="lazy"></figure>
         <figure><img src="../shots/ru/locations.webp" data-zoom alt="Локации" loading="lazy"></figure>
         <figure><img src="../shots/ru/app_place.webp" data-zoom alt="Карточка планеты" loading="lazy"></figure>
         <figure><img src="../shots/ru/app_jobs.webp" data-zoom alt="Работёнка и слухи" loading="lazy"></figure>
@@ -150,21 +150,35 @@
 </section>
 
 <section id="all">
-  <div class="head" data-n="02"><p class="kicker">Файл 02 — Корабль</p><h2>Понятный бланк корабля</h2></div>
+  <div class="head" data-n="02"><p class="kicker">Файл 02 — Бланки</p><h2>Бланки корабля и персонажей</h2></div>
   <div class="log pipe-log">
     <p class="kicker">От автора</p>
     <blockquote>
       <p>Кроме того, я регулярно забывал, что там на чаршите корабля, и искал его для игроков, чтобы они могли раскидать улучшения между партиями. Теперь он тоже здесь, и его удобно редактировать с телефона.</p>
-      <p>При этом мне нравится, когда у каждого игрока есть свой бумажный чарник, поэтому листы персонажей я пока не добавлял.</p>
       <footer>— Virrius</footer>
     </blockquote>
   </div>
-  <div class="frame">
-    <div class="scroll">
-      <img src="../shots/ru/ship_full.webp" alt="Бланк корабля целиком" loading="lazy" width="1740" height="4250">
+  <p class="note">Теперь бланк есть и у персонажей. «Бланк» собирает на одном экране стресс, травмы, раны, нагрузку, креды, навыки, способности и снаряжение, а в шапке держит памятку по правилам с пояснениями по клику. «Настройка» проводит через создание и развитие, «Досье» показывает того же персонажа личным делом Управления дознания.</p>
+  <div class="viewer">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab"><b>01</b>Бланк корабля<span>Реноме, опыт, креды, долг, системы, улучшения, таланты и знакомые экипажа. Листается внутри рамки.</span></button>
+      <button type="button" role="tab"><b>02</b>Бланк персонажа<span>Слева стресс, травмы, раны, нагрузка и креды, справа навыки, способности и снаряжение, в шапке памятка по правилам.</span></button>
+      <button type="button" role="tab"><b>03</b>Досье<span>Тот же персонаж глазами Гегемонии: резюме дознавателя, психологический профиль, подготовка и приложения к делу. Листается внутри рамки.</span></button>
+    </div>
+    <div class="screen">
+      <div class="screen-bar">
+        <span class="ticks"></span>
+        <span class="count"></span>
+        <button type="button" data-step="-1" aria-label="Назад">←</button>
+        <button type="button" data-step="1" aria-label="Вперёд">→</button>
+      </div>
+      <div class="slides">
+        <div class="pane"><div class="scroll"><img src="../shots/ru/ship_full.webp" alt="Бланк корабля целиком" loading="lazy" width="1740" height="4250"></div></div>
+        <div class="pane"><img src="../shots/ru/char_full.webp" data-zoom alt="Бланк персонажа" loading="lazy" width="1740" height="1429"></div>
+        <div class="pane"><div class="scroll"><img src="../shots/ru/char_dossier.webp" alt="Досье персонажа" loading="lazy" width="1740" height="1941"></div></div>
+      </div>
     </div>
   </div>
-  <p class="small">Бланк корабля целиком: реноме, опыт, креды, долг, системы, улучшения, таланты и знакомые экипажа. Листается внутри рамки.</p>
 </section>
 
 <section id="pictures">
