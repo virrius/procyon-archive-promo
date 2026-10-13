@@ -102,6 +102,10 @@ h1 { margin: 0 0 20px; font: 800 clamp(52px, 4.2vw, 80px)/.92 var(--display); te
 h1 span { display: block; }
 h1 .outline { color: transparent; -webkit-text-stroke: 1.5px var(--amber); }
 .lede { margin: 0; max-width: 620px; font-size: 18px; line-height: 1.6; color: var(--text); text-shadow: 0 1px 12px rgba(0, 0, 0, .6); }
+.get { margin: 28px 0 0; }
+.get a { display: inline-block; padding: 12px 18px; border: 1px solid var(--amber); background: rgba(11, 10, 8, .6);
+  font: 500 13px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--amber); transition: background .15s, color .15s; }
+.get a:hover, .get a:focus-visible { background: var(--amber); color: var(--bg); }
 
 /* лента артов: две полосы навстречу, весь пояс слегка наклонён */
 .band { position: relative; margin: 8px calc(-1 * var(--gut)) 0; padding: 40px 0; overflow: hidden; }
@@ -232,6 +236,8 @@ figure { margin: 0; }
 .wordmark { margin: 30px 0 18px; white-space: nowrap; font: 900 clamp(56px, 9.6vw, 190px)/.85 var(--display); letter-spacing: .01em;
   text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px rgba(230, 169, 79, .24); }
 .foot p { margin: 0; font: 12px var(--mono); letter-spacing: .06em; }
+.foot p + p { margin-top: 8px; }
+.foot a { color: var(--amber); }
 
 /* просмотр крупно */
 .lb { position: fixed; inset: 0; z-index: 80; display: none; padding: 24px 64px; align-items: center; justify-content: center;
